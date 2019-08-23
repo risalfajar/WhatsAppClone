@@ -16,6 +16,7 @@ public class MainPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         Button mLogout = findViewById(R.id.btn_logout);
+        Button mFindUser = findViewById(R.id.btn_find_user);
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +30,12 @@ public class MainPageActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 return;
+            }
+        });
+        mFindUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FindUserActivity.class));
             }
         });
     }

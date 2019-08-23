@@ -73,11 +73,6 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    private void verifyPhoneNumberWithCode(){
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, mCode.getText().toString().trim());
-        signInWithPhoneAuthCredential(credential);
-    }
-
     private void signInWithPhoneAuthCredential(PhoneAuthCredential phoneAuthCredential) {
         FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -90,15 +85,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void userIsLoggedIn() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null){ //just a double check if user is really logged in
-            startActivity(new Intent(getApplicationContext(), MainPageActivity.class));
-            finish();
-            return;
-        }
-    }
-
     private void startPhoneNumberVerification() {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 mPhoneNumber.getText().toString().trim(),
@@ -106,5 +92,19 @@ public class MainActivity extends AppCompatActivity {
                 TimeUnit.SECONDS,
                 this,
                 mCallbacks);
+    }
+
+    private void verifyPhoneNumberWithCode(){
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, mCode.getText().toString().trim());
+        signInWithPhoneAuthCredential(credential);
+    }
+
+    private void userIsLoggedIn() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){ //just a double check if user is really logged in
+            startActivity(new Intent(getApplicationContext(), MainPageActivity.class));
+            finish();
+            return;
+        }
     }
 }
