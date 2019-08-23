@@ -39,9 +39,10 @@ public class FindUserActivity extends AppCompatActivity {
 
             UserObject mContact = new UserObject(name, phone);
             userList.add(mContact);
-            //notify adapter that contact has been loaded
-            mUserListAdapter.notifyDataSetChanged();
         }
+        //notify adapter that contact has been loaded
+        mUserListAdapter.notifyDataSetChanged();
+        phones.close();
     }
 
     private void initializeRecyclerView() {
