@@ -25,7 +25,7 @@ public class MainPageActivity extends AppCompatActivity {
                 //logout user
                 FirebaseAuth.getInstance().signOut();
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 //this flags will tell the activity to clear everything on top of it (another activity that still running)
                 //so that user can only access the login activity
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
